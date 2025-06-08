@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能餐饮推荐系统</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-utensils"></i>
+                <span>智能餐饮推荐</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="showSection('home')">首页</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="showSection('profile')">个人资料</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="showSection('dishes')">菜品浏览</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="showSection('recommendations')">个性推荐</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="showSection('nutrition')">营养分析</a>
+                </li>
+            </ul>
+            <div class="user-info">
+                <span>欢迎，<span id="current-user">游客</span></span>
+                <button class="btn-secondary" id="login-btn" onclick="showLoginModal()">登录</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容区域 -->
+    <div class="main-content">
+        <!-- 首页 -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <h1>智能餐饮推荐系统</h1>
+                <p>基于个人健康数据和饮食偏好，为您提供专业的营养搭配建议</p>
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-users"></i>
+                        <h3 id="total-users">--</h3>
+                        <p>注册用户</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-utensils"></i>
+                        <h3 id="total-dishes">--</h3>
+                        <p>菜品数量</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-heart"></i>
+                        <h3>100+</h3>
+                        <p>健康食谱</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <i class="fas fa-user-circle"></i>
+                        <h3>个人资料管理</h3>
+                    </div>
+                    <p>设置您的基本信息、健康数据和饮食偏好，让推荐更加精准。</p>
+                    <button class="btn-primary" onclick="showSection('profile')" style="margin-top: 1rem;">完善资料</button>
+                </div>
+
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <i class="fas fa-utensils"></i>
+                        <h3>菜品库浏览</h3>
+                    </div>
+                    <p>浏览丰富的菜品库，查看详细的营养成分和制作信息。</p>
+                    <button class="btn-primary" onclick="showSection('dishes')" style="margin-top: 1rem;">浏览菜品</button>
+                </div>
+
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <i class="fas fa-heart"></i>
+                        <h3>智能推荐</h3>
+                    </div>
+                    <p>基于您的健康状况和饮食偏好，生成个性化的菜品推荐。</p>
+                    <button class="btn-primary" onclick="showSection('recommendations')" style="margin-top: 1rem;">获取推荐</button>
+                </div>
+
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>营养分析</h3>
+                    </div>
+                    <p>生成详细的营养分析报告，帮助您监控饮食健康。</p>
+                    <button class="btn-primary" onclick="showSection('nutrition')" style="margin-top: 1rem;">查看报告</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 个人资料 -->
+        <section id="profile" class="section">
+            <div class="profile-container">
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <i class="fas fa-user-edit"></i>
+                        <h2>个人资料</h2>
+                    </div>
+                    
+                    <form id="profile-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="username">用户名</label>
+                                <input type="text" id="username" name="username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">邮箱</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="age">年龄</label>
+                                <input type="number" id="age" name="age" min="1" max="120">
+                            </div>
+                            <div class="form-group">
+                                <label for="gender">性别</label>
+                                <select id="gender" name="gender">
+                                    <option value="">请选择</option>
+                                    <option value="M">男</option>
+                                    <option value="F">女</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="weight">体重 (kg)</label>
+                                <input type="number" id="weight" name="weight" step="0.1" min="20" max="300">
+                            </div>
+                            <div class="form-group">
+                                <label for="height">身高 (cm)</label>
+                                <input type="number" id="height" name="height" min="100" max="250">
+                            </div>
+                        </div>
+
+                        <div class="health-metrics">
+                            <div class="metric">
+                                <label>BMI 指数</label>
+                                <span id="bmi-value">--</span>
+                            </div>
+                            <div class="metric">
+                                <label>基础代谢率</label>
+                                <span id="bmr-value">--</span>
+                            </div>
+                        </div>
+
+                        <div class="preferences-section">
+                            <h4>饮食偏好</h4>
+                            
+                            <div class="preference-group">
+                                <label>喜欢的菜系 (按回车添加)</label>
+                                <div class="tag-input">
+                                    <input type="text" id="cuisine-input" placeholder="如：川菜、粤菜、湘菜...">
+                                    <div id="cuisine-tags" class="tags-container"></div>
+                                </div>
+                            </div>
+
+                            <div class="preference-group">
+                                <label>口味偏好 (按回车添加)</label>
+                                <div class="tag-input">
+                                    <input type="text" id="flavor-input" placeholder="如：清淡、微辣、香甜...">
+                                    <div id="flavor-tags" class="tags-container"></div>
+                                </div>
+                            </div>
+
+                            <div class="preference-group">
+                                <label>过敏信息 (按回车添加)</label>
+                                <div class="tag-input">
+                                    <input type="text" id="allergy-input" placeholder="如：花生、海鲜、乳制品...">
+                                    <div id="allergy-tags" class="tags-container"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-primary">保存资料</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- 菜品浏览 -->
+        <section id="dishes" class="section">
+            <div class="dishes-header">
+                <h2><i class="fas fa-utensils"></i> 菜品库</h2>
+                <div class="dishes-filters">
+                    <select id="cuisine-filter" onchange="filterDishes()">
+                        <option value="">所有菜系</option>
+                    </select>
+                    <select id="flavor-filter" onchange="filterDishes()">
+                        <option value="">所有口味</option>
+                    </select>
+                    <button class="btn-primary" onclick="showAddDishModal()">
+                        <i class="fas fa-plus"></i> 添加菜品
+                    </button>
+                </div>
+            </div>
+            <div id="dishes-grid" class="dishes-grid"></div>
+        </section>
+
+        <!-- 个性推荐 -->
+        <section id="recommendations" class="section">
+            <div class="recommendation-controls">
+                <h2><i class="fas fa-heart"></i> 个性化推荐</h2>
+                <select id="meal-type">
+                    <option value="">所有餐次</option>
+                    <option value="早餐">早餐</option>
+                    <option value="午餐">午餐</option>
+                    <option value="晚餐">晚餐</option>
+                    <option value="加餐">加餐</option>
+                </select>
+                <button class="btn-primary" onclick="generateRecommendations()">
+                    <i class="fas fa-magic"></i> 生成推荐
+                </button>
+            </div>
+            <div id="recommendations-grid" class="recommendations-grid"></div>
+        </section>
+
+        <!-- 营养分析 -->
+        <section id="nutrition" class="section">
+            <div class="nutrition-controls">
+                <h2><i class="fas fa-chart-pie"></i> 营养分析</h2>
+                <button class="btn-primary" onclick="generateNutritionReport()">
+                    <i class="fas fa-file-medical"></i> 生成报告
+                </button>
+                <button class="btn-secondary" onclick="showNutritionHistory()">
+                    <i class="fas fa-history"></i> 历史记录
+                </button>
+            </div>
+            <div id="nutrition-report"></div>
+        </section>
+    </div>
+
+    <!-- 登录模态框 -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('login-modal')">&times;</span>
+            <h2><i class="fas fa-sign-in-alt"></i> 用户登录</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-username">用户名</label>
+                    <input type="text" id="login-username" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-email">邮箱</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <button type="submit" class="btn-primary">登录</button>
+                <button type="button" class="btn-secondary" onclick="showRegisterForm()">没有账号？去注册</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 添加菜品模态框 -->
+    <div id="dish-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('dish-modal')">&times;</span>
+            <h2><i class="fas fa-plus"></i> 添加新菜品</h2>
+            <form id="dish-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="dish-name">菜品名称</label>
+                        <input type="text" id="dish-name" name="dish-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dish-cuisine">菜系</label>
+                        <input type="text" id="dish-cuisine" name="dish-cuisine" placeholder="如：川菜、粤菜">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="dish-flavor">口味</label>
+                        <input type="text" id="dish-flavor" name="dish-flavor" placeholder="如：清淡、微辣">
+                    </div>
+                    <div class="form-group">
+                        <label for="dish-price">价格 (¥)</label>
+                        <input type="number" id="dish-price" name="dish-price" step="0.01" min="0">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="dish-description">描述</label>
+                    <textarea id="dish-description" name="dish-description" rows="3"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="dish-calories">热量 (kcal)</label>
+                        <input type="number" id="dish-calories" name="dish-calories" step="0.1" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="dish-protein">蛋白质 (g)</label>
+                        <input type="number" id="dish-protein" name="dish-protein" step="0.1" min="0">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="dish-fat">脂肪 (g)</label>
+                        <input type="number" id="dish-fat" name="dish-fat" step="0.1" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="dish-carbohydrate">碳水化合物 (g)</label>
+                        <input type="number" id="dish-carbohydrate" name="dish-carbohydrate" step="0.1" min="0">
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary">添加菜品</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast 通知 -->
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html> 

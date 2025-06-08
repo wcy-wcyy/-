@@ -1,0 +1,17 @@
+/Users/alienhe/Downloads/ai-restaurants/src/main/java/com/restaurant/recommendation/repository/DishRepository.java
+/Users/alienhe/Downloads/ai-restaurants/src/main/java/com/restaurant/recommendation/dto/RecommendationRequest.java
+/Users/alienhe/Downloads/ai-restaurants/src/main/java/com/restaurant/recommendation/service/RecommendationService.java
+/Users/alienhe/Downloads/ai-restaurants/src/main/java/com/restaurant/recommendation/service/NutritionAnalysisService.java
+/Users/alienhe/Downloads/ai-restaurants/src/main/java/com/restaurant/recommendation/repository/NutritionReportRepository.java
+/Users/alienhe/Downloads/ai-restaurants/src/main/java/com/restaurant/recommendation/RestaurantRecommendationApplication.java
+/Users/alienhe/Downloads/ai-restaurants/src/main/java/com/restaurant/recommendation/entity/Dish.java
+/Users/alienhe/Downloads/ai-restaurants/src/main/java/com/restaurant/recommendation/entity/User.java
+/Users/alienhe/Downloads/ai-restaurants/src/main/java/com/restaurant/recommendation/controller/UserController.java
+/Users/alienhe/Downloads/ai-restaurants/src/main/java/com/restaurant/recommendation/repository/RecommendationRepository.java
+/Users/alienhe/Downloads/ai-restaurants/src/main/java/com/restaurant/recommendation/entity/Recommendation.java
+/Users/alienhe/Downloads/ai-restaurants/src/main/java/com/restaurant/recommendation/config/DataInitializer.java
+/Users/alienhe/Downloads/ai-restaurants/src/main/java/com/restaurant/recommendation/controller/DishController.java
+/Users/alienhe/Downloads/ai-restaurants/src/main/java/com/restaurant/recommendation/controller/NutritionController.java
+/Users/alienhe/Downloads/ai-restaurants/src/main/java/com/restaurant/recommendation/controller/RecommendationController.java
+/Users/alienhe/Downloads/ai-restaurants/src/main/java/com/restaurant/recommendation/entity/NutritionReport.java
+/Users/alienhe/Downloads/ai-restaurants/src/main/java/com/restaurant/recommendation/repository/UserRepository.java

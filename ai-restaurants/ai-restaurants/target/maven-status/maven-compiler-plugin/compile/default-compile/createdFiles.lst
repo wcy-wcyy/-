@@ -1,0 +1,16 @@
+com/restaurant/recommendation/repository/UserRepository.class
+com/restaurant/recommendation/repository/DishRepository.class
+com/restaurant/recommendation/entity/Recommendation.class
+com/restaurant/recommendation/entity/User.class
+com/restaurant/recommendation/entity/NutritionReport.class
+com/restaurant/recommendation/controller/NutritionController.class
+com/restaurant/recommendation/entity/Dish.class
+com/restaurant/recommendation/controller/UserController.class
+com/restaurant/recommendation/controller/DishController.class
+com/restaurant/recommendation/controller/RecommendationController.class
+com/restaurant/recommendation/repository/NutritionReportRepository.class
+com/restaurant/recommendation/service/NutritionAnalysisService.class
+com/restaurant/recommendation/repository/RecommendationRepository.class
+com/restaurant/recommendation/RestaurantRecommendationApplication.class
+com/restaurant/recommendation/service/RecommendationService.class
+com/restaurant/recommendation/dto/RecommendationRequest.class
